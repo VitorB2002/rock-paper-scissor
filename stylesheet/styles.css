@@ -12,6 +12,17 @@ body {
     align-content: center;
     align-items: center;
     background-color: #232434;
+    font-family: 'Common Pixel', sans-serif;
+}
+
+.header {
+    width: 900px;
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 55px;
+    background-color: #04aa6d;
+    border-radius: 25px;
 }
 
 #buttons-container {
@@ -37,7 +48,6 @@ button {
 .results {
     width: 600px;
     background-color: #232434;
-    font-family: 'Common Pixel', sans-serif;
 }
 
 #result {
