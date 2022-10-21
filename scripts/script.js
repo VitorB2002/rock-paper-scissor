@@ -1,5 +1,6 @@
 let playerPoints = 0;
 let computerPoints = 0;
+let option;
 
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
@@ -26,6 +27,7 @@ function playRound(playerChoice, computerChoice){
         case "paper":
 
             if(computerChoice == "rock"){
+                playerPoints++;
                 return "You Won! rock beats scissors";
             }   else if(computerChoice == "scissors"){
                 computerPoints++;
@@ -37,8 +39,10 @@ function playRound(playerChoice, computerChoice){
         case "scissors":
 
             if(computerChoice == "paper"){
+                playerPoints++;
                 return "You Won! scissors beats paper";
             }   else if(computerChoice == "rock"){
+                computerPoints++;
                 return "You Lose! rock beats scissors"
             }
 
@@ -51,26 +55,43 @@ function playRound(playerChoice, computerChoice){
 function game(){
     let playerChoice;
 
-    alert("Computer challenges you to a 5 round match of rock paper scissors")
+    alert("Computer challenges you to a first 5 round match of rock paper scissors")
 
-    for (let i = 0 ; i < 5 ; i++){
+    for (let i = 0 ; i < 5 ;){
         playerChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
 
         while(playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
-            playerChoice = prompt("Invalid input, choose rock, paper or scissors: ");
+            playerChoice = prompt("Invalid input, choose rock, paper or scissors: ").toLowerCase();
         }
 
         alert(playRound(playerChoice, getComputerChoice()));
+
+        if(playerPoints > computerPoints){
+            i = playerPoints;
+        }   else{
+            i = computerPoints
+        }
+
     }
 
     if(playerPoints > computerPoints){
-        alert("You won against the machine")
+        alert("You won against the machine, match result = " + playerPoints + " X " + computerPoints);
     }   else if(playerPoints < computerPoints){
-        alert("You lost against the machine")
+        alert("You lose against the machine, match result = " + playerPoints + " X " + computerPoints);
     }   else{
-        alert("We have a Draw!")
+        alert("We have a draw, match result = " + playerPoints + " X " + computerPoints);
     }
 
 }
 
-game();
+function reset(){
+    playerPoints = computerPoints = 0;
+}
+
+do{
+    game();
+    option = prompt("Press Y to play again").toLowerCase();
+    reset();
+}   while(option == "y");
+
+alert("Thanks for playing")
