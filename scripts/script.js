@@ -4,4 +4,10 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-alert(getComputerChoice())
+let playerChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
+
+while(playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
+    playerChoice = prompt("Invalid input, choose rock, paper or scissors: ");
+}
+
+alert("Computer choice = " + getComputerChoice() + " Player choice = " + playerChoice)
