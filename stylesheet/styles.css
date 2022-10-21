@@ -9,7 +9,6 @@
 body {
     display: flex;
     flex-direction: column;
-    align-content: center;
     align-items: center;
     background-color: #232434;
     font-family: 'Common Pixel', sans-serif;
@@ -45,9 +44,12 @@ button {
     height: auto;
 }
 
-.results {
+#results {
+    display: flex;
+    flex-direction: column;
     width: 600px;
     background-color: #232434;
+    align-items: center;
 }
 
 #result {
