@@ -6,10 +6,6 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
-rock.addEventListener('click', alertMsg);
-paper.addEventListener('click', alertMsg);
-scissors.addEventListener('click', alertMsg);
-
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
     let computerChoice = options[(Math.floor(Math.random() * 3))];
@@ -24,10 +20,10 @@ function playRound(playerChoice, computerChoice){
 
             if(computerChoice == "scissors"){
                 playerPoints++;
-                return "You Won! rock beats scissors";
+                return console.log("You Won! rock beats scissors");
             }   else if(computerChoice == "paper"){
                 computerPoints++;
-                return "You Lose! paper beats rock"
+                return console.log("You Lose! paper beats rock");
             }
 
             break;
@@ -36,10 +32,10 @@ function playRound(playerChoice, computerChoice){
 
             if(computerChoice == "rock"){
                 playerPoints++;
-                return "You Won! rock beats scissors";
+                return console.log("You Won! rock beats scissors");
             }   else if(computerChoice == "scissors"){
                 computerPoints++;
-                return "You Lose! scissors beats paper"
+                return console.log("You Lose! scissors beats paper");
             }
 
             break;
@@ -48,16 +44,16 @@ function playRound(playerChoice, computerChoice){
 
             if(computerChoice == "paper"){
                 playerPoints++;
-                return "You Won! scissors beats paper";
+                return console.log("You Won! scissors beats paper");
             }   else if(computerChoice == "rock"){
                 computerPoints++;
-                return "You Lose! rock beats scissors"
+                return console.log("You Lose! rock beats scissors");
             }
 
             break;
     }
 
-    return "It's a Draw, both players have choose " + playerChoice;
+    return console.log("It's a Draw, both players have choose " + playerChoice);
 }
 
 function game(){
@@ -109,3 +105,13 @@ do{
 
 alert("Thanks for playing")
 */
+
+rock.addEventListener('click', () => {
+    playRound("rock", getComputerChoice());
+});
+paper.addEventListener('click', () => {
+    playRound("paper", getComputerChoice())
+});
+scissors.addEventListener('click', () => {
+    playRound("scissors", getComputerChoice())
+});
