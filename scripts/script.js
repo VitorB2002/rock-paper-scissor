@@ -52,6 +52,7 @@ function playRound(playerChoice, computerChoice){
     return "It's a Draw, both players have choose " + playerChoice;
 }
 
+/*
 function game(){
     let playerChoice;
 
@@ -95,3 +96,4 @@ do{
 }   while(option == "y");
 
 alert("Thanks for playing")
+*/

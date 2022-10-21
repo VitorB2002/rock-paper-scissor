@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #232434;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-around;
+    width: 900px;
+    gap: 50px;
+}
+
+.button {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    border: 2px solid black;
+    background-color: #04aa6d;
+}
+
+.button-img {
+    width: 240px;
+    height: auto;
+}
