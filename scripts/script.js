@@ -1,76 +1,133 @@
 let playerPoints = 0;
 let computerPoints = 0;
 
+const resultsContainer = document.getElementById("results");
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const score = document.getElementById("score");
+const result = document.getElementById("result");
+let resetButton = document.createElement("button");
+
+resetButton.innerHTML = "RESET";
+resetButton.style.fontSize = "25px";
+resetButton.style.backgroundColor = "#04aa6d";
+resetButton.style.border = "1px solid black";
+resetButton.style.width = "175px";
+resetButton.style.height = "50px";
+resetButton.style.fontFamily = "Common Pixel, sans-serif";
+resetButton.style.margin = "30px";
+
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
     let computerChoice = options[(Math.floor(Math.random() * 3))];
     return computerChoice;
 }
 
-function playRound(playerChoice, computerChoice){
+function game(playerChoice, computerChoice){
+    
+    if(playerPoints < 5 && computerPoints < 5){
 
-    switch (playerChoice){
+        switch (playerChoice){
 
-        case "rock":
+            case "rock":
 
-            if(computerChoice == "scissors"){
-                playerPoints++;
-                return "You Won! rock beats scissors";
-            }   else if(computerChoice == "paper"){
-                computerPoints++;
-                return "You Lose! paper beats rock"
-            }
+                if(computerChoice == "scissors"){
+                    playerPoints++;
+                    score.innerHTML = playerPoints + " X " + computerPoints;
+                        if(playerPoints == 5)
+                            break;
+                    result.innerHTML = "You Won! rock beats scissors".toUpperCase();
+                    return;
+                }   else if(computerChoice == "paper"){
+                    computerPoints++;
+                    score.innerHTML = playerPoints + " X " + computerPoints;
+                        if(computerPoints == 5)
+                            break;
+                    result.innerHTML = "You Lose! paper beats rock".toUpperCase();
+                    return;
+                }
+
+            break;
+
+            case "paper":
+
+                if(computerChoice == "rock"){
+                    playerPoints++;
+                    score.innerHTML = playerPoints + " X " + computerPoints;
+                        if(playerPoints == 5)
+                            break;
+                    result.innerHTML = "You Won! paper beats rock".toUpperCase();
+                    return;
+                }   else if(computerChoice == "scissors"){
+                    computerPoints++;
+                    score.innerHTML = playerPoints + " X " + computerPoints;
+                        if(computerPoints == 5)
+                            break;
+                    result.innerHTML = "You Lose! scissors beats paper".toUpperCase();
+                    return;
+                }
 
             break;
 
-        case "paper":
+            case "scissors":
 
-            if(computerChoice == "rock"){
-                return "You Won! rock beats scissors";
-            }   else if(computerChoice == "scissors"){
-                computerPoints++;
-                return "You Lose! scissors beats paper"
-            }
+                if(computerChoice == "paper"){
+                    playerPoints++;
+                    score.innerHTML = playerPoints + " X " + computerPoints;
+                    if(playerPoints == 5)
+                        break;
+                    result.innerHTML = "You Won! scissors beats paper".toUpperCase();
+                    return;
+                }   else if(computerChoice == "rock"){
+                    computerPoints++;
+                    score.innerHTML = playerPoints + " X " + computerPoints;
+                        if(computerPoints == 5)
+                            break;
+                    result.innerHTML = "You Lose! rock beats scissors".toUpperCase();
+                    return;
+                }
 
-            break;
+            break
 
-        case "scissors":
-
-            if(computerChoice == "paper"){
-                return "You Won! scissors beats paper";
-            }   else if(computerChoice == "rock"){
-                return "You Lose! rock beats scissors"
-            }
-
-            break;
-    }
-
-    return "It's a Draw, both players have choose " + playerChoice;
-}
-
-function game(){
-    let playerChoice;
-
-    alert("Computer challenges you to a 5 round match of rock paper scissors")
-
-    for (let i = 0 ; i < 5 ; i++){
-        playerChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
-
-        while(playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
-            playerChoice = prompt("Invalid input, choose rock, paper or scissors: ");
         }
 
-        alert(playRound(playerChoice, getComputerChoice()));
-    }
+        if(playerPoints != 5 && computerPoints != 5){
+            result.innerHTML = ("It's a Draw, " + playerChoice + " X " + computerChoice).toUpperCase();
+            return;
+        }   else{
+                if(playerPoints == 5){
+                    result.innerHTML = ("You won the match against the machine").toUpperCase();
+                }   else{
+                    result.innerHTML = ("You lose the match against the machine").toUpperCase();
+                }
+                resultsContainer.appendChild(resetButton);
+            return;
+        }
 
-    if(playerPoints > computerPoints){
-        alert("You won against the machine")
-    }   else if(playerPoints < computerPoints){
-        alert("You lost against the machine")
-    }   else{
-        alert("We have a Draw!")
     }
-
 }
 
-game();
+function reset(){
+    playerPoints = computerPoints = 0;
+    result.innerHTML = "MAKE YOUR CHOICE";
+    score.innerHTML = "0 X 0";
+    resultsContainer.lastChild.remove();
+}
+
+function alertMsg(){
+    alert("clicked");
+}
+
+rock.addEventListener('click', () => {
+    game("rock", getComputerChoice());
+});
+paper.addEventListener('click', () => {
+    game("paper", getComputerChoice())
+});
+scissors.addEventListener('click', () => {
+    game("scissors", getComputerChoice())
+});
+resetButton.addEventListener('click', () => {
+    reset();
+});
