@@ -2,6 +2,14 @@ let playerPoints = 0;
 let computerPoints = 0;
 let option;
 
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+rock.addEventListener('click', alertMsg);
+paper.addEventListener('click', alertMsg);
+scissors.addEventListener('click', alertMsg);
+
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
     let computerChoice = options[(Math.floor(Math.random() * 3))];
@@ -52,7 +60,6 @@ function playRound(playerChoice, computerChoice){
     return "It's a Draw, both players have choose " + playerChoice;
 }
 
-/*
 function game(){
     let playerChoice;
 
@@ -89,6 +96,11 @@ function reset(){
     playerPoints = computerPoints = 0;
 }
 
+function alertMsg(){
+    alert("clicked");
+}
+
+/*
 do{
     game();
     option = prompt("Press Y to play again").toLowerCase();
