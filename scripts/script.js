@@ -1,18 +1,23 @@
+let playerPoints = 0;
+let computerPoints = 0;
+
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
     let computerChoice = options[(Math.floor(Math.random() * 3))];
     return computerChoice;
 }
 
-function round(playerChoice, computerChoice){
+function playRound(playerChoice, computerChoice){
 
     switch (playerChoice){
 
         case "rock":
 
             if(computerChoice == "scissors"){
+                playerPoints++;
                 return "You Won! rock beats scissors";
             }   else if(computerChoice == "paper"){
+                computerPoints++;
                 return "You Lose! paper beats rock"
             }
 
@@ -23,6 +28,7 @@ function round(playerChoice, computerChoice){
             if(computerChoice == "rock"){
                 return "You Won! rock beats scissors";
             }   else if(computerChoice == "scissors"){
+                computerPoints++;
                 return "You Lose! scissors beats paper"
             }
 
@@ -30,10 +36,10 @@ function round(playerChoice, computerChoice){
 
         case "scissors":
 
-            if(computerChoice == "rock"){
-                return "You Lose! rock beats scissors";
-            }   else if(computerChoice == "scissors"){
-                return "You Won! scissors beats paper"
+            if(computerChoice == "paper"){
+                return "You Won! scissors beats paper";
+            }   else if(computerChoice == "rock"){
+                return "You Lose! rock beats scissors"
             }
 
             break;
@@ -42,10 +48,29 @@ function round(playerChoice, computerChoice){
     return "It's a Draw, both players have choose " + playerChoice;
 }
 
-let playerChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
+function game(){
+    let playerChoice;
 
-while(playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
-    playerChoice = prompt("Invalid input, choose rock, paper or scissors: ");
+    alert("Computer challenges you to a 5 round match of rock paper scissors")
+
+    for (let i = 0 ; i < 5 ; i++){
+        playerChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
+
+        while(playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
+            playerChoice = prompt("Invalid input, choose rock, paper or scissors: ");
+        }
+
+        alert(playRound(playerChoice, getComputerChoice()));
+    }
+
+    if(playerPoints > computerPoints){
+        alert("You won against the machine")
+    }   else if(playerPoints < computerPoints){
+        alert("You lost against the machine")
+    }   else{
+        alert("We have a Draw!")
+    }
+
 }
 
-alert("Computer choice = " + getComputerChoice() + " Player choice = " + playerChoice)
+game();
