@@ -6,6 +6,7 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const score = document.getElementById("score");
+const result = document.getElementById("result");
 
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
@@ -22,10 +23,12 @@ function playRound(playerChoice, computerChoice){
             if(computerChoice == "scissors"){
                 playerPoints++;
                 score.innerHTML = playerPoints + " X " + computerPoints;
+                result.innerHTML = "You Won! rock beats scissors";
                 return
             }   else if(computerChoice == "paper"){
                 computerPoints++;
                 score.innerHTML = playerPoints + " X " + computerPoints;
+                result.innerHTML = "You Lose! paper beats rock";
                 return
             }
 
@@ -36,10 +39,12 @@ function playRound(playerChoice, computerChoice){
             if(computerChoice == "rock"){
                 playerPoints++;
                 score.innerHTML = playerPoints + " X " + computerPoints;
+                result.innerHTML = "You Won! paper beats rock";
                 return
             }   else if(computerChoice == "scissors"){
                 computerPoints++;
                 score.innerHTML = playerPoints + " X " + computerPoints;
+                result.innerHTML = "You Lose! scissors beats paper";
                 return
             }
 
@@ -50,17 +55,21 @@ function playRound(playerChoice, computerChoice){
             if(computerChoice == "paper"){
                 playerPoints++;
                 score.innerHTML = playerPoints + " X " + computerPoints;
+                result.innerHTML = "You Won! scissors beats paper";
                 return
             }   else if(computerChoice == "rock"){
                 computerPoints++;
                 score.innerHTML = playerPoints + " X " + computerPoints;
+                result.innerHTML = "You Lose! rock beats scissors";
                 return
             }
 
             break;
     }
 
-    return console.log("It's a Draw, both players have choose " + playerChoice);
+    result.innerHTML = "It's a Draw, both players have choose " + playerChoice;
+
+    return
 }
 
 function game(){
@@ -102,16 +111,6 @@ function reset(){
 function alertMsg(){
     alert("clicked");
 }
-
-/*
-do{
-    game();
-    option = prompt("Press Y to play again").toLowerCase();
-    reset();
-}   while(option == "y");
-
-alert("Thanks for playing")
-*/
 
 rock.addEventListener('click', () => {
     playRound("rock", getComputerChoice());
