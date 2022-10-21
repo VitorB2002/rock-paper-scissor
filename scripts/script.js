@@ -5,6 +5,7 @@ let option;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+const score = document.getElementById("score");
 
 function getComputerChoice(){
     let options = ['rock', 'paper', 'scissors'];
@@ -20,10 +21,12 @@ function playRound(playerChoice, computerChoice){
 
             if(computerChoice == "scissors"){
                 playerPoints++;
-                return console.log("You Won! rock beats scissors");
+                score.innerHTML = playerPoints + " X " + computerPoints;
+                return
             }   else if(computerChoice == "paper"){
                 computerPoints++;
-                return console.log("You Lose! paper beats rock");
+                score.innerHTML = playerPoints + " X " + computerPoints;
+                return
             }
 
             break;
@@ -32,10 +35,12 @@ function playRound(playerChoice, computerChoice){
 
             if(computerChoice == "rock"){
                 playerPoints++;
-                return console.log("You Won! rock beats scissors");
+                score.innerHTML = playerPoints + " X " + computerPoints;
+                return
             }   else if(computerChoice == "scissors"){
                 computerPoints++;
-                return console.log("You Lose! scissors beats paper");
+                score.innerHTML = playerPoints + " X " + computerPoints;
+                return
             }
 
             break;
@@ -44,10 +49,12 @@ function playRound(playerChoice, computerChoice){
 
             if(computerChoice == "paper"){
                 playerPoints++;
-                return console.log("You Won! scissors beats paper");
+                score.innerHTML = playerPoints + " X " + computerPoints;
+                return
             }   else if(computerChoice == "rock"){
                 computerPoints++;
-                return console.log("You Lose! rock beats scissors");
+                score.innerHTML = playerPoints + " X " + computerPoints;
+                return
             }
 
             break;

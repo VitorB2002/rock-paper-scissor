@@ -6,7 +6,9 @@
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
     background-color: #232434;
 }
 
@@ -28,4 +30,17 @@ button {
 .button-img {
     width: 240px;
     height: auto;
+}
+
+.results {
+    width: 250px;
+    height: 50px;
+}
+
+#score {
+    margin-top: 50px;
+    text-align: center;
+    border: 1px solid white;
+    font-size: 45px;
+    background-color: white;
 }
